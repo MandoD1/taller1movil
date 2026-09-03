@@ -2,7 +2,6 @@ package com.example.taller1movil.ui.screens
 
 import android.content.Intent
 import android.net.Uri
-import android.util.Log
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
@@ -53,7 +52,6 @@ fun PantallaDetalleProducto(product: Producto) {
                     style = MaterialTheme.typography.headlineMedium,
                     color = MaterialTheme.colorScheme.primary,
                     modifier = Modifier.clickable {
-                        Log.d("APP_LOG", "Evento de intent: Se ha activado el intent de teléfono")
                         val dialIntent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:${product.id}"))
                         context.startActivity(dialIntent)
                     }
@@ -65,7 +63,6 @@ fun PantallaDetalleProducto(product: Producto) {
                     text = product.description,
                     style = MaterialTheme.typography.bodyLarge,
                     modifier = Modifier.clickable {
-                        Log.d("APP_LOG", "Evento de intent: se ha activado un intent de SMS")
                         val smsIntent = Intent(Intent.ACTION_SENDTO, Uri.parse("smsto:")).apply {
                             putExtra("sms_body", "${product.title}: ${product.description}")
                         }

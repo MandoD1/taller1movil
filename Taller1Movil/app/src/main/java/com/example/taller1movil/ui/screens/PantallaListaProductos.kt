@@ -1,6 +1,5 @@
 package com.example.taller1movil.ui.screens
 
-import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.*
 import androidx.compose.material3.*
@@ -15,8 +14,6 @@ import com.example.taller1movil.ui.components.TarjetaProductoComponente
 fun PantallaListaProductos(products: List<Producto>, onProductClick: (Producto) -> Unit) {
     var isDarkTheme by remember { mutableStateOf(false) }
     val colorScheme = if (isDarkTheme) darkColorScheme() else lightColorScheme()
-
-    Log.d("APP_LOG", "Tamaño de productos: ${products.size}")
 
     MaterialTheme(colorScheme = colorScheme) {
         Surface(
