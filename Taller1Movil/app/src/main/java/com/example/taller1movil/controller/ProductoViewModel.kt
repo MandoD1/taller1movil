@@ -10,7 +10,6 @@ import kotlinx.coroutines.launch
 
 class ProductoViewModel : ViewModel() {
     private val service = ServicioProducto()
-
     private val _productList = MutableStateFlow<List<Producto>>(emptyList())
     val productList: StateFlow<List<Producto>> = _productList
 
