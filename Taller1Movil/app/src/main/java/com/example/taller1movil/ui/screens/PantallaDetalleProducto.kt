@@ -14,15 +14,14 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
 import com.example.taller1movil.model.Producto
+import com.example.taller1movil.ui.theme.TemaApp
 
 @Composable
 fun PantallaDetalleProducto(product: Producto) {
     val context = LocalContext.current
-
     var isDarkTheme by remember { mutableStateOf(false) }
-    val colorScheme = if (isDarkTheme) darkColorScheme() else lightColorScheme()
 
-    MaterialTheme(colorScheme = colorScheme) {
+    TemaApp(oscuro = isDarkTheme) {
         Surface(
             modifier = Modifier.fillMaxSize(),
             color = MaterialTheme.colorScheme.background
@@ -56,7 +55,6 @@ fun PantallaDetalleProducto(product: Producto) {
                         context.startActivity(dialIntent)
                     }
                 )
-
                 Spacer(modifier = Modifier.height(12.dp))
 
                 Text(
@@ -79,7 +77,15 @@ fun PantallaDetalleProducto(product: Producto) {
                     Text(text = "Dimensions: ${it.width} x ${it.height} x ${it.depth}", style = MaterialTheme.typography.bodyMedium)
                 }
 
-                Text(text = "Reviews: ${product.reviews.size} reviews", style = MaterialTheme.typography.bodyMedium)
+                Spacer(modifier = Modifier.height(8.dp))
+                Text(text = "Reviews:", style = MaterialTheme.typography.titleSmall)
+                product.reviews.forEach { review ->
+                    Text(
+                        text = "- ${review.reviewerName} (${review.rating}): ${review.comment}",
+                        style = MaterialTheme.typography.bodySmall,
+                        modifier = Modifier.padding(vertical = 2.dp)
+                    )
+                }
 
                 Spacer(modifier = Modifier.height(16.dp))
 

@@ -9,13 +9,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.taller1movil.model.Producto
 import com.example.taller1movil.ui.components.TarjetaProductoComponente
+import com.example.taller1movil.ui.theme.TemaApp
 
 @Composable
 fun PantallaListaProductos(products: List<Producto>, onProductClick: (Producto) -> Unit) {
     var isDarkTheme by remember { mutableStateOf(false) }
-    val colorScheme = if (isDarkTheme) darkColorScheme() else lightColorScheme()
 
-    MaterialTheme(colorScheme = colorScheme) {
+    TemaApp(oscuro = isDarkTheme) {
         Surface(
             modifier = Modifier.fillMaxSize(),
             color = MaterialTheme.colorScheme.background

@@ -33,6 +33,7 @@ fun TarjetaProductoComponente(product: Producto, onProductClick: (Producto) -> U
         Spacer(modifier = Modifier.height(4.dp))
 
         Text(text = product.title)
+        Text(text = product.category)
         Text(text = "$${product.price}")
         Text(text = "${product.rating}")
     }
